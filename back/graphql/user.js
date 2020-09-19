@@ -11,13 +11,31 @@ const schema = `
   }
 
   type Query {
-    user(email: String): User
+    getUser(email: String): User
+  }
+
+  type Mutation {
+    setUser(
+      firstName: String,
+      lastName: String,
+      email: String,
+      password: String
+    ): User
   }
 `;
 
 const resolver = {
-  user: (email) => {
+  getUser: (email) => {
     return User.getByEmail(email);
+  },
+  setUser: ({ firstName, lastName, email, password }) => {
+    const newUser = new User({
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+    });
+    return newUser.save();
   },
 };
 
