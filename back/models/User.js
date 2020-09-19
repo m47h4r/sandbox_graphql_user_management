@@ -24,6 +24,10 @@ class User {
     return null;
   }
 
+  static getAll() {
+    return fakeDB;
+  }
+
   save() {
     const userToSave = {
       id: this.id,

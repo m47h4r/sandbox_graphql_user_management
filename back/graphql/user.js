@@ -12,6 +12,7 @@ const schema = `
 
   type Query {
     getUser(email: String): User
+    getAllUsers: [User!]!
   }
 
   type Mutation {
@@ -27,6 +28,9 @@ const schema = `
 const resolver = {
   getUser: (email) => {
     return User.getByEmail(email);
+  },
+  getAllUsers: () => {
+    return User.getAll();
   },
   setUser: ({ firstName, lastName, email, password }) => {
     const newUser = new User({
