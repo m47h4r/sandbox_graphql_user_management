@@ -6,6 +6,13 @@ const fakeDB = [
     email: "m47h4r@gmail.com",
     password: "1234",
   },
+  {
+    id: "2",
+    firstName: "Someone",
+    lastName: "Someonei",
+    email: "some@mail.com",
+    password: "4321",
+  },
 ];
 
 class User {
