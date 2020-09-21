@@ -17,7 +17,8 @@ function GetAllUsers() {
   const { data, loading } = useQuery(GET_ALL_USERS);
 
   return (
-    <>
+    <div>
+      <h2>Get All Users:</h2>
       {!loading
         ? data.getAllUsers.map((user) =>
             Object.keys(user).map((property, index) => (
@@ -27,7 +28,7 @@ function GetAllUsers() {
             ))
           )
         : null}
-    </>
+    </div>
   );
 }
 
