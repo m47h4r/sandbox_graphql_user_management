@@ -77,6 +77,7 @@ function SetUser() {
       ></input>
       <label htmlFor="email">Email:</label>
       <input
+        required
         type="email"
         id="email"
         value={email}
@@ -84,6 +85,7 @@ function SetUser() {
       ></input>
       <label htmlFor="password">Password:</label>
       <input
+        required
         type="password"
         id="password"
         value={password}
