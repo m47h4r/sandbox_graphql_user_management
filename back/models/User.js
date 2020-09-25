@@ -35,7 +35,16 @@ class User {
     return fakeDB;
   }
 
+  isAnyFieldEmpty() {
+    if (this.firstName.length <= 0) return true;
+    if (this.lastName.length <= 0) return true;
+    if (this.email.length <= 0) return true;
+    if (this.password.length <= 0) return true;
+    return false;
+  }
+
   save() {
+    if (this.isAnyFieldEmpty()) return;
     const userToSave = {
       id: this.id,
       firstName: this.firstName,
