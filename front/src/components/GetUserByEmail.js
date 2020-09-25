@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { gql, useLazyQuery } from "@apollo/client";
 
 const GET_USER_BY_EMAIL = gql`
-  query getUser($email: String) {
+  query GetUser($email: String!) {
     getUser(email: $email) {
       firstName
       lastName
@@ -15,8 +15,8 @@ const GET_USER_BY_EMAIL = gql`
 
 function GetUserByEmail() {
   const [requestedUserEmail, setRequestedUserEmail] = useState("");
-  const [getTheUser, { data, loading }] = useLazyQuery(GET_USER_BY_EMAIL, {
-    variables: { requestedUserEmail },
+  const [getTheUser, { loading, data }] = useLazyQuery(GET_USER_BY_EMAIL, {
+    variables: { email: requestedUserEmail },
   });
 
   return (
@@ -25,10 +25,15 @@ function GetUserByEmail() {
         onChange={(event) => setRequestedUserEmail(event.target.value)}
         value={requestedUserEmail}
       ></input>
-      <button type="button" onClick={() => getTheUser()}>
+      <button
+        type="button"
+        onClick={() => {
+          getTheUser();
+        }}
+      >
         Fetch it!
       </button>
-      <div>{!loading ? JSON.stringify(data) : "loading"}</div>
+      <pre>{!loading ? JSON.stringify(data, null, 2) : "loading"}</pre>
     </div>
   );
 }

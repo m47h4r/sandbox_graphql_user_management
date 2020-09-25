@@ -11,7 +11,7 @@ const schema = `
   }
 
   type Query {
-    getUser(email: String): User
+    getUser(email: String!): User
     getAllUsers: [User!]!
   }
 
@@ -19,8 +19,8 @@ const schema = `
     setUser(
       firstName: String,
       lastName: String,
-      email: String,
-      password: String
+      email: String!,
+      password: String!
     ): User
   }
 `;
